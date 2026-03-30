@@ -50,7 +50,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
             Explicitly<span className="text-her-gradient ml-1 pr-2">Her</span>
           </span>
         </a>
-
+ 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
