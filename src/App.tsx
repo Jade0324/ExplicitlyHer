@@ -41,7 +41,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#home" className="flex items-center gap-3 group">
           <img 
-            src="/images/Explicit Logo.png" 
+            src="/images/explicit-logo.png" 
             alt="Explicit Logo" 
             className="w-10 h-10 object-contain group-hover:rotate-12 transition-transform"
             referrerPolicy="no-referrer"
@@ -301,16 +301,16 @@ const JoinCommunityModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
 
 const MosaicSection = () => {
   const images = [
-    "/images/Anna Mae Dote.jpg",
-    "/images/Anna Mae Dote (2).jpg",
-    "/images/Crisanchai Crisostomo.jpg",
-    "/images/Erica Daguplo.jpg",
-    "/images/Mikaela Madrid.jpg",
-    "/images/Shiela Mae Paigan.png",
-    "/images/Shiraine Marianne.jpg",
-    "/images/Shiraine Marianne (2).jpg",
-    "/images/Stephanie de Villa.jpg",
-    "/images/Anna Mae Dote.jpg",
+    "/images/anna-mae-dote.jpg",
+    "/images/anna-mae-dote-2.jpg",
+    "/images/crisanchai-crisostomo.jpg",
+    "/images/erica-daguplo.jpg",
+    "/images/mikaela-madrid.jpg",
+    "/images/shiela-mae-paigan.png",
+    "/images/shiraine-marianne-bituin.jpg",
+    "/images/shiraine-marianne-bituin-2.jpg",
+    "/images/stephanie-de-villa.jpg",
+    "/images/anna-mae-dote.jpg",
   ];
 
   return (
@@ -378,7 +378,7 @@ const FoundationSection = () => {
             <div className="w-px h-24 bg-purple-100 hidden md:block" />
             <div className="px-8 flex items-center justify-center">
               <img 
-                src="/images/Explicit Logo.png" 
+                src="/images/explicit-logo.png" 
                 alt="Explicitly Her" 
                 className="w-12 h-12 object-contain opacity-80"
                 referrerPolicy="no-referrer"
@@ -474,37 +474,37 @@ const InnovatorsSection = () => {
   const risingInnovators = [
     {
       name: "Anna Mae Dote",
-      photo: "/images/Anna Mae Dote.jpg",
+      photo: "/images/anna-mae-dote.jpg",
       question: "How have you navigated challenges or ‘broken the glass’ in your technical projects?",
       answer: "As of now that I am focusing in UI/UX Design for our Capstone, it is hard for me to meet the standard design or the output design that our client wants, because I have to consider also the capability of our programmer so that we can be able to present or develop a functional system for them."
     },
     {
       name: "Stephanie De Villa",
-      photo: "/images/Stephanie de Villa.jpg",
+      photo: "/images/stephanie-de-villa.jpg",
       question: "What was the exact moment you realized you wanted to pursue technology?",
       answer: "My journey truly began when I joined the EXPLICIT organization as representative. It opened my eyes to the vast opportunities within the industry and provided hands-on experience that changed my perspective. I remember the immense satisfaction I felt when I started understanding how coding works in the real world. Although I initially worried it would be too difficult to master, that challenge actually transformed my mindset. That was the precise moment I knew I wanted to pursue a career in the field of technology."
     },
     {
       name: "Mikaela Madrid",
-      photo: "/images/Mikaela Madrid.jpg",
+      photo: "/images/mikaela-madrid.jpg",
       question: "How have you navigated challenges or 'broken the glass' in your technical projects?",
       answer: "I navigate challenges in my technical projects by breaking them down into smaller, manageable tasks and researching possible solutions. This approach helps me continuously learn and improve"
     },
     {
       name: "Shiraine Marianne Bituin",
-      photo: "/images/Shiraine Marianne.jpg",
+      photo: "/images/shiraine-marianne-bituin.jpg",
       question: "What is one 'explicit' change you hope to see in the tech world by the time you graduate?",
       answer: "One explicit change I hope to see in the tech world is the greater accessibility to learning and opportunities, especially for students who doesn’t have their full access or control of their time or resources. Due to the fact that not everyone has the privilege of a perfect schedule or environment, but that doesn’t mean they lack potential. I hope that the tech industry continues to create more flexible, and inclusive paths for people to learn, grow, and contribute. Because talents and skills exists everywhere, it just needs the right opportunity to be seen."
     },
     {
       name: "Shiela Mae Paigan",
-      photo: "/images/Shiela Mae Paigan.png",
+      photo: "/images/shiela-mae-paigan.png",
       question: "What was the exact moment you realized you wanted to pursue technology?",
       answer: "My journey into technology began with a simple childhood frustration: I loved computer games, but I didn't know how to fix them when they broke. I used to watch my cousin, a BSIT graduate from PUP San Pedro, work her magic on my machine. I was so impressed by her skills that she became my first inspiration; I wanted to do exactly what she could do.\n\nBy the time I reached high school at SPRCNHS, I dove straight into the ICT specialization. While I loved creating animations, I’ll admit that learning the basics of HTML and CSS was a challenge. However, facing those hurdles was the exact moment I realized I wanted to pursue this field. I discovered that technology isn't just about machines—it’s about creating solutions that make life easier. That realization pushed me to take on leadership roles, serving as president of the ICT, Techno, and English clubs. Moving from a child who was inspired by others to a leader who inspires students today has been one of my proudest transitions."
     },
     {
       name: "Erica Daguplo",
-      photo: "/images/Erica Daguplo.jpg",
+      photo: "/images/erica-daguplo.jpg",
       question: "What was the exact moment you realized you wanted to pursue technology?",
       answer: "To be honest, tech wasn’t really part of my original plans — like, not at all. Ever since Grade 10, I was set on pursuing psychology. But life happens, and somehow, I ended up here.\n\nAt first, it felt unexpected, but over time, it became a growing realization that maybe this path is meant for me. Being in this course and in the EXPLICIT Organization made me see that it wasn’t a wrong turn after all — I found a space where I could grow, learn, and lead. I'm loving it here.\n\nSo, I think that was my ‘spark’ — not a single moment, but the realization that I’m exactly where I’m supposed to be :)"
     }
@@ -540,7 +540,7 @@ const InnovatorsSection = () => {
           >
             <div className="md:w-2/5 relative overflow-hidden">
               <img 
-                src="/images/Crisanchai Crisostomo.jpg" 
+                src="/images/crisanchai-crisostomo.jpg" 
                 alt="Crisanchai Crisostomo" 
                 className="w-full h-full object-cover object-[center_15%]"
                 referrerPolicy="no-referrer"
@@ -779,7 +779,7 @@ const HeartOfExplicit = () => {
           >
             <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/40">
               <img 
-                src="/images/Explicit Pic.jpeg" 
+                src="/images/explicit-pic.jpeg" 
                 alt="EXPLICIT Community" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -926,22 +926,22 @@ const WordsOfWisdom = () => {
   const row1Quotes = [
     {
       name: "Crisanchai Crisostomo",
-      image: "/images/Crisanchai Crisostomo.jpg",
+      image: "/images/crisanchai-crisostomo.jpg",
       quote: "Your unique perspective is your greatest strength. Never be afraid to speak your truth in a room full of silence."
     },
     {
       name: "Anna Mae Dote",
-      image: "/images/Anna Mae Dote.jpg",
+      image: "/images/anna-mae-dote.jpg",
       quote: "Technology is not just a collection of tools, but a canvas for human ingenuity; your passion shouldn’t just be about mastering the code, but about the lives you can improve and the problems you can solve with it."
     },
     {
       name: "Stephanie De Villa",
-      image: "/images/Stephanie de Villa.jpg",
+      image: "/images/stephanie-de-villa.jpg",
       quote: "The ‘spark’ isn't just about finding the right code, it'a about finding the courage to keep trying until it works."
     },
     {
       name: "Mikaela Madrid",
-      image: "/images/Mikaela Madrid.jpg",
+      image: "/images/mikaela-madrid.jpg",
       quote: "Start small, think big"
     }
   ];
@@ -949,17 +949,17 @@ const WordsOfWisdom = () => {
   const row2Quotes = [
     {
       name: "Shiraine Marianne Bituin",
-      image: "/images/Shiraine Marianne.jpg",
+      image: "/images/shiraine-marianne-bituin.jpg",
       quote: "In life, you won’t always understand the system you’re placed in, but trust that God is writing a greater program for you. So Keep learning, keep building, and never forget that your greatest upgrade will always come from within."
     },
     {
       name: "Shiela Mae Paigan",
-      image: "/images/Shiela Mae Paigan.png",
+      image: "/images/shiela-mae-paigan.png",
       quote: "Nobody starts as an expert; everyone begins as a beginner."
     },
     {
       name: "Erica Daguplo",
-      image: "/images/Erica Daguplo.jpg",
+      image: "/images/erica-daguplo.jpg",
       quote: "I didn’t start because I was certain — I stayed because I found where I belong."
     }
   ];
@@ -1111,7 +1111,7 @@ const StatsSection = () => {
   const stats = [
     { label: 'Programs Launched', value: '10+', icon: <Rocket className="w-6 h-6" /> },
     { label: 'Women Empowered', value: '500+', icon: <Users className="w-6 h-6" /> },
-    { label: 'Global Reach', value: 'Global', icon: <img src="/images/Explicit Logo.png" className="w-6 h-6 object-contain" alt="EH" referrerPolicy="no-referrer" /> },
+    { label: 'Global Reach', value: 'Global', icon: <img src="/images/explicit-logo.png" className="w-6 h-6 object-contain" alt="EH" referrerPolicy="no-referrer" /> },
     { label: 'Leadership Roles', value: '45%', icon: <Star className="w-6 h-6" /> },
   ];
 
