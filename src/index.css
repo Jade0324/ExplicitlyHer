@@ -355,38 +355,35 @@
 }
 
 .hero-btn-primary {
-  background: #1a0a2e;
+  background: linear-gradient(to right, #9333ea, #db2777);
   color: white;
-  border-radius: 30px;
-  padding: 14px 30px;
+  border-radius: 9999px;
+  padding: 12px 32px;
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
 }
 
 .hero-btn-primary:hover {
-  background: #3d1a6e;
-  transform: scale(1.03);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(147, 51, 234, 0.4);
 }
 
 .hero-btn-secondary {
-  background: rgba(255,255,255,0.6);
-  color: #3d1a6e;
-  border: 0.5px solid rgba(107,63,160,0.38);
-  border-radius: 30px;
-  padding: 14px 30px;
+  background: transparent;
+  color: #1a0a2e;
+  padding: 12px 24px;
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 600;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  font-weight: 700;
   transition: all 0.3s ease;
 }
 
 .hero-btn-secondary:hover {
-  background: rgba(255,255,255,0.88);
-  transform: scale(1.03);
+  opacity: 0.8;
+  transform: scale(1.02);
 }
 
 /* Smooth scrolling */

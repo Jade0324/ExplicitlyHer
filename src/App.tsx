@@ -112,7 +112,6 @@ const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
 };
 
 const JoinCommunityModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const [isLogin, setIsLogin] = useState(true);
   const specularRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -171,125 +170,47 @@ const JoinCommunityModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                 <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4 shadow-inner">
                   <Users className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-3xl font-serif mb-2">{isLogin ? 'Welcome Back' : 'Join Our Community'}</h2>
+                <h2 className="text-3xl font-serif mb-2">Join Our Community</h2>
                 <p className="text-white/70 font-light text-sm">
-                  {isLogin 
-                    ? 'Login to access your dashboard and connect with the community.' 
-                    : 'Become part of a global network of women redefining technology.'}
+                  Become part of a global network of women redefining technology. Share your journey with us.
                 </p>
               </div>
 
-              <div className="relative min-h-[400px]">
-                <AnimatePresence mode="wait">
-                  {isLogin ? (
-                    <motion.div
-                      key="login"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 20 }}
-                      className="space-y-6"
-                    >
-                      <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
-                        <div className="space-y-2">
-                          <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Email Address</label>
-                          <div className="relative">
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-                            <input 
-                              type="email" 
-                              placeholder="jane@example.com"
-                              className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all"
-                              required
-                            />
-                          </div>
-                        </div>
+              <div className="relative">
+                <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Email Address</label>
+                    <div className="relative">
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                      <input 
+                        type="email" 
+                        placeholder="jane@example.com"
+                        className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                        <div className="space-y-2">
-                          <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Password</label>
-                          <div className="relative">
-                            <Star className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-                            <input 
-                              type="password" 
-                              placeholder="••••••••"
-                              className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all"
-                              required
-                            />
-                          </div>
-                        </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Share Your Story</label>
+                    <div className="relative">
+                      <Quote className="absolute left-4 top-4 w-5 h-5 text-white/40" />
+                      <textarea 
+                        placeholder="Tell us about your journey in tech..."
+                        rows={4}
+                        className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all resize-none"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                        <button 
-                          type="submit"
-                          className="w-full bg-white text-zinc-900 py-4 rounded-2xl font-bold text-lg hover:bg-purple-50 transition-all shadow-xl active:scale-[0.98] mt-4"
-                        >
-                          Login
-                        </button>
-                      </form>
-                      <p className="text-center text-white/60 text-sm">
-                        Don't have an account?{' '}
-                        <button onClick={() => setIsLogin(false)} className="text-white font-bold hover:underline">Register</button>
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="register"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      className="space-y-6"
-                    >
-                      <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
-                        <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Full Name</label>
-                          <div className="relative">
-                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-                            <input 
-                              type="text" 
-                              placeholder="Jane Doe"
-                              className="w-full bg-white/10 border border-white/10 rounded-2xl py-3 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all"
-                              required
-                            />
-                          </div>
-                        </div>
-
-                        <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Email Address</label>
-                          <div className="relative">
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-                            <input 
-                              type="email" 
-                              placeholder="jane@example.com"
-                              className="w-full bg-white/10 border border-white/10 rounded-2xl py-3 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all"
-                              required
-                            />
-                          </div>
-                        </div>
-
-                        <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Primary Interest</label>
-                          <div className="relative">
-                            <Star className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-                            <select className="w-full bg-white/10 border border-white/10 rounded-2xl py-3 pl-12 pr-6 text-white focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all appearance-none cursor-pointer">
-                              <option className="bg-zinc-900">Mentorship</option>
-                              <option className="bg-zinc-900">Networking</option>
-                              <option className="bg-zinc-900">Career Growth</option>
-                              <option className="bg-zinc-900">Technical Training</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <button 
-                          type="submit"
-                          className="w-full bg-white text-zinc-900 py-4 rounded-2xl font-bold text-lg hover:bg-purple-50 transition-all shadow-xl active:scale-[0.98] mt-4"
-                        >
-                          Create Account
-                        </button>
-                      </form>
-                      <p className="text-center text-white/60 text-sm">
-                        Already have an account?{' '}
-                        <button onClick={() => setIsLogin(true)} className="text-white font-bold hover:underline">Login</button>
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                  <button 
+                    type="submit"
+                    className="w-full bg-white text-zinc-900 py-4 rounded-2xl font-bold text-lg hover:bg-purple-50 transition-all shadow-xl active:scale-[0.98] mt-4"
+                  >
+                    Join Now
+                  </button>
+                </form>
               </div>
             </div>
           </motion.div>
@@ -377,12 +298,15 @@ const FoundationSection = () => {
           <div className="flex justify-center">
             <div className="w-px h-24 bg-purple-100 hidden md:block" />
             <div className="px-8 flex items-center justify-center">
-              <img 
-                src="/images/explicit-logo.png" 
-                alt="Explicitly Her" 
-                className="w-12 h-12 object-contain opacity-80"
-                referrerPolicy="no-referrer"
-              />
+              <div className="w-20 h-20 rounded-full bg-white shadow-[0_0_20px_rgba(139,92,246,0.2)] border-2 border-purple-100 flex items-center justify-center p-3 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <img 
+                  src="/images/explicit-logo.png" 
+                  alt="Explicitly Her" 
+                  className="w-full h-full object-contain relative z-10"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
             </div>
             <div className="w-px h-24 bg-purple-100 hidden md:block" />
           </div>
@@ -528,35 +452,30 @@ const InnovatorsSection = () => {
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Alumni Spotlight */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-4xl md:text-5xl font-serif text-purple-dark drop-shadow-sm">Alumni Spotlight</h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="innovator-card rounded-[32px] overflow-hidden flex flex-col md:flex-row min-h-[500px] shadow-2xl border border-white/40 mb-12"
+        >
+          <div className="md:w-2/5 relative overflow-hidden">
+            <img 
+              src="/images/crisanchai-crisostomo.jpg" 
+              alt="Crisanchai Crisostomo" 
+              className="w-full h-full object-cover object-[center_15%]"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 md:to-transparent" />
           </div>
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="innovator-card rounded-[32px] overflow-hidden flex flex-col md:flex-row min-h-[500px] shadow-2xl border border-white/40"
-          >
-            <div className="md:w-2/5 relative overflow-hidden">
-              <img 
-                src="/images/crisanchai-crisostomo.jpg" 
-                alt="Crisanchai Crisostomo" 
-                className="w-full h-full object-cover object-[center_15%]"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 md:to-transparent" />
+          <div className="md:w-3/5 p-8 md:p-14 flex flex-col relative bg-white/95 backdrop-blur-sm">
+            <div className="mb-8">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-purple-800 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+                ★ Alumni Spotlight
+              </span>
+              <h3 className="text-4xl md:text-6xl font-serif text-purple-dark mb-3 leading-tight">Crisanchai Crisostomo</h3>
             </div>
-            <div className="md:w-3/5 p-8 md:p-14 flex flex-col relative bg-white/95 backdrop-blur-sm">
-              <div className="mb-8">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-purple-800 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
-                  ★ Alumni Spotlight
-                </span>
-                <h3 className="text-4xl md:text-6xl font-serif text-purple-dark mb-3 leading-tight">Crisanchai Crisostomo</h3>
-                <p className="text-purple-700 font-bold font-body text-lg">EXPLICIT Alumni</p>
-              </div>
-              
-              <div className="border-l-4 border-pink-500 pl-8 mb-8">
+            
+            <div className="border-l-4 border-pink-500 pl-8 mb-8">
                 <p className="font-serif italic text-xl md:text-2xl text-purple-900 leading-relaxed">
                   "What advice would you give to your 1st-year self?"
                 </p>
@@ -580,7 +499,6 @@ const InnovatorsSection = () => {
               </div>
             </div>
           </motion.div>
-        </div>
 
         {/* Rising Innovators Carousel */}
         <div className="relative">
@@ -795,8 +713,14 @@ const HeartOfExplicit = () => {
             className="lg:col-span-7"
           >
             <div className="bg-white/90 backdrop-blur-xl p-10 md:p-14 rounded-[3.5rem] shadow-2xl border border-white/60 relative">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-zinc-900 leading-tight">
-                The Heart of <span className="text-[#2563eb] font-bold">EXPLICIT</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-8 text-zinc-900 leading-tight flex items-center gap-4">
+                <span>The Heart of <span className="text-[#2563eb] font-bold">EXPLICIT</span></span>
+                <img 
+                  src="/images/explicit-logo.png" 
+                  alt="Logo" 
+                  className="w-20 h-20 md:w-28 md:h-28 object-contain" 
+                  referrerPolicy="no-referrer" 
+                />
               </h2>
               <p className="text-lg md:text-xl text-zinc-700 leading-relaxed mb-10 font-light">
                 The <span className="font-bold">EXPLICIT</span> organization was founded on a simple, yet powerful premise: that technology is most transformative when it is inclusive. What began as a community of innovators has evolved into a sanctuary for brilliance, resilience, and advocacy. We didn't just want to create a space for IT professionals; we wanted to create a platform where women could explicitly lead, explicitly innovate, and explicitly belong.
@@ -1111,14 +1035,13 @@ const StatsSection = () => {
   const stats = [
     { label: 'Programs Launched', value: '10+', icon: <Rocket className="w-6 h-6" /> },
     { label: 'Women Empowered', value: '500+', icon: <Users className="w-6 h-6" /> },
-    { label: 'Global Reach', value: 'Global', icon: <img src="/images/explicit-logo.png" className="w-6 h-6 object-contain" alt="EH" referrerPolicy="no-referrer" /> },
     { label: 'Leadership Roles', value: '45%', icon: <Star className="w-6 h-6" /> },
   ];
 
   return (
     <section className="py-16 stats-section relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
           {stats.map((stat, i) => (
             <motion.div 
               key={i}
