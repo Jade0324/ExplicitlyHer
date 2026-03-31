@@ -14,6 +14,8 @@ import {
   X,
   User,
   Mail,
+  Facebook,
+  Instagram,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -108,115 +110,6 @@ const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
         )}
       </AnimatePresence>
     </nav>
-  );
-};
-
-const JoinCommunityModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const specularRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!specularRef.current) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    specularRef.current.style.background = `radial-gradient(
-      circle at ${x}px ${y}px,
-      rgba(255,255,255,0.2) 0%,
-      rgba(255,255,255,0.05) 30%,
-      rgba(255,255,255,0) 60%
-    )`;
-  };
-
-  const handleMouseLeave = () => {
-    if (specularRef.current) {
-      specularRef.current.style.background = 'none';
-    }
-  };
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-zinc-900/60 backdrop-blur-md"
-          />
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="glass-form w-full max-w-md rounded-[2.5rem] shadow-2xl relative overflow-hidden"
-          >
-            <div className="glass-filter" />
-            <div className="glass-overlay" />
-            <div ref={specularRef} className="glass-specular" />
-            
-            <div className="glass-content p-10 md:p-12">
-              <button 
-                onClick={onClose}
-                className="absolute top-8 right-8 text-white/60 hover:text-white transition-colors z-50"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              <div className="mb-8 text-white">
-                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4 shadow-inner">
-                  <Users className="w-6 h-6 text-white" />
-                </div>
-                <h2 className="text-3xl font-serif mb-2">Join Our Community</h2>
-                <p className="text-white/70 font-light text-sm">
-                  Become part of a global network of women redefining technology. Share your journey with us.
-                </p>
-              </div>
-
-              <div className="relative">
-                <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
-                  <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Email Address</label>
-                    <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-                      <input 
-                        type="email" 
-                        placeholder="jane@example.com"
-                        className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold ml-1">Share Your Story</label>
-                    <div className="relative">
-                      <Quote className="absolute left-4 top-4 w-5 h-5 text-white/40" />
-                      <textarea 
-                        placeholder="Tell us about your journey in tech..."
-                        rows={4}
-                        className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/10 transition-all resize-none"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <button 
-                    type="submit"
-                    className="w-full bg-white text-zinc-900 py-4 rounded-2xl font-bold text-lg hover:bg-purple-50 transition-all shadow-xl active:scale-[0.98] mt-4"
-                  >
-                    Join Now
-                  </button>
-                </form>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
   );
 };
 
@@ -751,101 +644,6 @@ const HeartOfExplicit = () => {
 
 
 
-const ParallaxCTA = ({ onClick }: { onClick: () => void }) => {
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-  const maxRotation = 15;
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
-    
-    const rotateY = (mouseX / (rect.width / 2)) * maxRotation;
-    const rotateX = -((mouseY / (rect.height / 2)) * maxRotation);
-    
-    setRotate({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-  };
-
-  return (
-    <div 
-      className="relative w-full max-w-[320px] h-[380px] mx-auto perspective-1000 cursor-pointer group mt-12"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onClick={onClick}
-    >
-      <motion.div 
-        animate={{ rotateX: rotate.x, rotateY: rotate.y }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        className="absolute inset-0 flex flex-col items-center justify-center p-8 rounded-[2rem] text-white shadow-2xl transform-style-3d overflow-hidden parallax-gradient"
-      >
-        <div className="relative z-10 flex flex-col items-center gap-6 transform-style-3d">
-          <motion.div 
-            style={{ transform: 'translateZ(50px)' }}
-            className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-inner"
-          >
-            <Rocket className="w-10 h-10 text-white" />
-          </motion.div>
-          
-          <div className="text-center transform-style-3d">
-            <motion.h3 
-              style={{ transform: 'translateZ(40px)' }}
-              className="text-3xl font-serif mb-2"
-            >
-              Get Involved Today
-            </motion.h3>
-          </div>
-
-          <motion.div
-            style={{ transform: 'translateZ(20px)' }}
-            className="mt-4 px-8 py-3 bg-white text-zinc-900 rounded-full text-sm font-bold shadow-lg hover:bg-purple-50 transition-colors"
-          >
-            Join Now
-          </motion.div>
-        </div>
-      </motion.div>
-    </div>
-  );
-};
-
-const CTASection = ({ onOpenModal }: { onOpenModal: () => void }) => {
-  return (
-    <section className="py-16 cta-section relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-6xl font-serif text-zinc-900 mb-4">Ready to make your mark?</h2>
-          <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full" />
-        </div>
-        
-        <div className="grid sm:grid-cols-3 gap-8 mb-16">
-          {[
-            { title: 'Upcoming Events', icon: <Star className="w-5 h-5" />, desc: 'Workshops & seminars' },
-            { title: 'Training Programs', icon: <Lightbulb className="w-5 h-5" />, desc: 'Skill-up sessions' },
-            { title: 'Opportunities', icon: <Rocket className="w-5 h-5" />, desc: 'Job & project leads' }
-          ].map((box, i) => (
-            <div key={i} className="floating-card">
-              <div className="floating-card-content !p-6 !text-left">
-                <div className="icon-wrapper text-purple-600 mb-3">{box.icon}</div>
-                <h4 className="font-bold text-sm mb-1">{box.title}</h4>
-                <p className="text-xs text-zinc-500">{box.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <ParallaxCTA onClick={onOpenModal} />
-      </div>
-    </section>
-  );
-};
-
 const WordsOfWisdom = () => {
   const row1Quotes = [
     {
@@ -976,53 +774,127 @@ const WordsOfWisdom = () => {
 
 const Footer = () => {
   return (
-    <footer className="text-white py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-16 mb-16">
-          <div className="col-span-2">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="font-serif text-2xl font-bold tracking-tight">
-                EXPLICITly <span className="text-her-gradient ml-1 pr-2">Her</span>
-              </span>
-            </div>
-            <p className="text-zinc-400 max-w-sm text-lg font-light leading-relaxed">
-              A global initiative dedicated to celebrating and empowering women in the technology sector through storytelling and community.
-            </p>
-          </div>
+    <footer id="community-form" className="bg-[#0F0F0F] text-white py-10 overflow-hidden border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-stretch justify-between gap-12 lg:gap-0">
           
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-8 text-zinc-500">Navigation</h4>
-            <ul className="space-y-4">
-              {['Home', 'Our Story', 'Innovators', 'Join Us'].map(item => (
-                <li key={item}>
-                  <a href={`#${item.toLowerCase().replace(' ', '')}`} className="text-zinc-300 hover:text-white transition-colors">{item}</a>
-                </li>
-              ))}
-            </ul>
+          {/* Left Column: Brand, Logo, Nav, Connect */}
+          <div className="lg:w-1/2 flex flex-col justify-start pr-0 lg:pr-12 gap-16">
+            <div className="flex flex-col md:flex-row items-start justify-between gap-12">
+              <div className="flex-1">
+                <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6 tracking-tight">
+                  Explicitly <span className="italic text-[#D946EF]">Her</span>
+                </h3>
+                <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-medium max-w-md">
+                  A global initiative dedicated to celebrating and empowering women in the technology sector through storytelling and community.
+                </p>
+              </div>
+              
+              {/* Medal Logo Concept */}
+              <div className="relative flex-shrink-0 self-center md:self-start mt-8 md:mt-0">
+                <div className="w-28 h-28 rounded-full bg-white shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center p-4 relative z-10">
+                  <img 
+                    src="/images/explicit-logo.png" 
+                    alt="Explicitly Her" 
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                {/* Subtle outer ring for "medal" feel */}
+                <div className="absolute inset-[-6px] rounded-full border border-white/10 z-0" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-20">
+              <div>
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-400 mb-6">Navigation</h4>
+                <ul className="space-y-4">
+                  {['Home', 'Our Story', 'Innovators'].map(item => (
+                    <li key={item}>
+                      <a href={`#${item.toLowerCase().replace(' ', '')}`} className="text-zinc-200 hover:text-white transition-colors text-xs font-medium">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-400 mb-6">Connect</h4>
+                <ul className="space-y-4">
+                  <li>
+                    <a href="#" className="flex items-center gap-4 text-zinc-200 hover:text-white transition-colors group">
+                      <Facebook className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="flex items-center gap-4 text-zinc-200 hover:text-white transition-colors group">
+                      <Instagram className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="flex items-center gap-4 text-zinc-200 hover:text-white transition-colors group">
+                      <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-8 text-zinc-500">Connect</h4>
-            <div className="flex gap-6">
-              <a href="#" className="w-10 h-10 rounded-full border border-zinc-700 flex items-center justify-center hover:bg-white hover:text-zinc-900 transition-all">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-zinc-700 flex items-center justify-center hover:bg-white hover:text-zinc-900 transition-all">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-zinc-700 flex items-center justify-center hover:bg-white hover:text-zinc-900 transition-all">
-                <Linkedin className="w-5 h-5" />
-              </a>
+          {/* Middle: Proper Vertical Divider */}
+          <div className="hidden lg:block w-px bg-gradient-to-b from-transparent via-zinc-800 to-transparent self-stretch mx-4" />
+
+          {/* Right Column: Form Card */}
+          <div className="lg:w-1/2 lg:pl-12 flex justify-center lg:justify-end items-center">
+            <div className="w-full max-w-[360px] relative group">
+              {/* Figma-style offset shadow */}
+              <div className="absolute inset-0 bg-black/40 rounded-[2.5rem] translate-x-3 translate-y-3 -z-10 blur-sm group-hover:translate-x-4 group-hover:translate-y-4 transition-transform" />
+              
+              <div className="bg-[#F3F4F6] rounded-[2.5rem] p-8 text-zinc-900 relative z-10 border border-white/10">
+                <h3 className="text-xl font-serif text-center mb-6 tracking-tight">Join to our Community!</h3>
+                
+                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <div className="space-y-2">
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-4">Enter your Email</label>
+                    <input 
+                      type="email" 
+                      placeholder="email@example.com"
+                      className="w-full bg-[#E5E7EB] border-none rounded-xl px-6 py-3 focus:ring-2 focus:ring-purple-500/50 transition-all placeholder:text-zinc-400 text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-4">Contact no.</label>
+                    <input 
+                      type="tel" 
+                      placeholder="+1 (555) 000-0000"
+                      className="w-full bg-[#E5E7EB] border-none rounded-xl px-6 py-3 focus:ring-2 focus:ring-purple-500/50 transition-all placeholder:text-zinc-400 text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-4">Share your story</label>
+                    <textarea 
+                      rows={3}
+                      placeholder="Tell us about your journey..."
+                      className="w-full bg-[#E5E7EB] border-none rounded-xl px-6 py-3 focus:ring-2 focus:ring-purple-500/50 transition-all resize-none placeholder:text-zinc-400 text-sm"
+                    />
+                  </div>
+                  <div className="flex justify-center pt-4">
+                    <button 
+                      type="submit"
+                      className="bg-[#0F0F1B] text-white px-12 py-3 rounded-xl font-bold hover:bg-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl w-full text-base tracking-wide"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
+
         </div>
 
-        <div className="pt-12 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-zinc-500">
-          <p>© 2026 EXPLICITly Her. All rights reserved.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
+        <div className="mt-10 pt-8 border-t border-zinc-900/50 text-center">
+          <p className="text-[10px] text-zinc-500 uppercase tracking-[0.6em] font-bold">
+            © 2026 EXPLICITly Her. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
@@ -1031,60 +903,26 @@ const Footer = () => {
 
 // --- Main App ---
 
-const StatsSection = () => {
-  const stats = [
-    { label: 'Programs Launched', value: '10+', icon: <Rocket className="w-6 h-6" /> },
-    { label: 'Women Empowered', value: '500+', icon: <Users className="w-6 h-6" /> },
-    { label: 'Leadership Roles', value: '45%', icon: <Star className="w-6 h-6" /> },
-  ];
-
-  return (
-    <section className="py-16 stats-section relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
-          {stats.map((stat, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 text-purple-600 shadow-sm">
-                {stat.icon}
-              </div>
-              <p className="text-4xl md:text-5xl font-serif text-zinc-900 mb-2">{stat.value}</p>
-              <p className="text-xs uppercase tracking-[0.2em] text-zinc-400 font-bold">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-
-
-
 export default function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const scrollToCommunity = () => {
+    const element = document.getElementById('community-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="selection:bg-purple-200 selection:text-purple-900">
-      <Navbar onOpenModal={() => setIsModalOpen(true)} />
+      <Navbar onOpenModal={scrollToCommunity} />
       <main>
         <Hero />
-        <StatsSection />
         <HeartOfExplicit />
         <MosaicSection />
         <FoundationSection />
         <InnovatorsSection />
         <WordsOfWisdom />
-        <CTASection onOpenModal={() => setIsModalOpen(true)} />
       </main>
       <Footer />
-      <JoinCommunityModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       
       {/* SVG Filter for Glass Distortion */}
       <svg style={{ display: 'none' }}>
